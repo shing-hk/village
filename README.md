@@ -2,4 +2,6 @@
 original author: tearnote
 https://github.com/Tearnote/village-of-chaos
 
-中文化 with cheats :) 
+Traditional Chinese localization, with cheats :) 
+
+繁體中文化 
