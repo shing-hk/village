@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="ScreenOrientation" content="autoRotate:disabled" />
+
+		<!-- Meta -->
+		<meta
+			name="description"
+			content="A short idle game about management."
+		/>
+		<meta name="theme-color" content="#768c38" />
+		<title>Village of Chaos</title>
+
+		<!-- Favicon -->
+		<link
+			rel="apple-touch-icon"
+			sizes="180x180"
+			href="apple-touch-icon.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="32x32"
+			href="favicon-32x32.png"
+		/>
+		<link
+			rel="icon"
+			type="image/png"
+			sizes="16x16"
+			href="favicon-16x16.png"
+		/>
+		<link rel="manifest" href="site.webmanifest" />
+
+		<!-- CSS -->
+		<link rel="stylesheet" href="assets/css/style.css" />
+		<!-- Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Alegreya:wght@400;700&family=Fira+Mono&family=Milonga&display=swap"
+			rel="stylesheet"
+		/>
+
+		<!-- Scripts. Do not reorder! -->
+		<script defer src="assets/js/vendor/gameloop.js"></script>
+		<script defer src="assets/js/util.js"></script>
+		<script defer src="assets/js/dom.js"></script>
+		<script defer src="assets/js/game.js"></script>
+		<script defer src="assets/js/upgradeList.js"></script>
+		<script defer src="assets/js/tutorial.js"></script>
+		<script defer src="assets/js/main.js"></script>
+	</head>
+	<body>
+		<!-- Javascript is required -->
+		<noscript>
+			<h1>Village of Chaos</h1>
+			<p>
+				This game requires Javascript to function. Please enable
+				Javascript for this website, or use a supported browser to play
+				Village of Chaos.
+			</p>
+		</noscript>
+
+		<!-- The square area covering most of the window -->
+		<section id="main">
+			<!-- Background - game world display -->
+			<section id="world">
+				<img
+					id="terrain-img"
+					alt="Game terrain"
+					src="assets/images/world.webp"
+				/>
+				<img
+					id="tent-img"
+					alt="Villager tents"
+					src="assets/images/tent.webp"
+				/>
+				<img
+					id="villager-img"
+					alt="A standing animated villager"
+					src="assets/images/villager.gif"
+				/>
+				<img
+					id="pier-img"
+					alt="Fishing pier"
+					src="assets/images/pier.webp"
+				/>
+				<img
+					id="fisherman-1-img"
+					alt="A standing animated fisherman"
+					src="assets/images/fisherman.gif"
+				/>
+				<img
+					id="fisherman-2-img"
+					alt="A standing animated fisherman"
+					src="assets/images/fisherman.gif"
+				/>
+				<img
+					id="quarry-img"
+					alt="Quarry entrance"
+					src="assets/images/quarry.webp"
+				/>
+				<img
+					id="miner-1-img"
+					alt="A standing animated miner"
+					src="assets/images/miner.gif"
+				/>
+				<img
+					id="miner-2-img"
+					alt="A standing animated miner"
+					src="assets/images/miner.gif"
+				/>
+				<img
+					id="smithy-img"
+					alt="Smithing workshop"
+					src="assets/images/smithy.webp"
+				/>
+				<img
+					id="blacksmith-img"
+					alt="A working animated blacksmith"
+					src="assets/images/blacksmith.gif"
+				/>
+				<img
+					id="academy-img"
+					alt="Village academy area"
+					src="assets/images/academy.webp"
+				/>
+				<img
+					id="professor-1-img"
+					alt="A working animated herbalist"
+					src="assets/images/professor1.gif"
+				/>
+				<img
+					id="professor-2-img"
+					alt="A working animated potion maker"
+					src="assets/images/professor2.gif"
+				/>
+			</section>
+
+			<!-- Controls for manual resource gathering -->
+			<section id="gathering">
+				<button id="gather-wood">收集木材石材</button>
+				<button id="gather-food">收集食物</button>
+			</section>
+		</section>
+
+		<!-- Side area with primary controls and upgrades -->
+		<section id="side">
+			<!-- Header with title and system controls -->
+			<header>
+				<h1>Village of Chaos</h1>
+				<p>中文化 1.0</p>
+				<button id="save">儲存</button>
+				<button id="load">載入</button>
+				<button id="reset">重置</button>
+			</header>
+
+			<!-- Information section about current resources and multipliers -->
+			<section id="warehouse">
+				<div>
+					<p class="resource wood">
+						<span class="resource-name">木材:</span>
+						<span class="resource-amount" id="wood-amount"></span>
+						<br />
+						<span class="income">
+							(+<span id="wood-income"></span>/s)
+						</span>
+					</p>
+					<p class="resource food">
+						<span class="resource-name">食物:</span>
+						<span class="resource-amount" id="food-amount"></span>
+						<br />
+						<span class="income">
+							(+<span id="food-income"></span>/s)
+						</span>
+					</p>
+					<p class="resource stone">
+						<span class="resource-name">石材:</span>
+						<span class="resource-amount" id="stone-amount"></span>
+						<br />
+						<span class="income">
+							(+<span id="stone-income"></span>/s)
+						</span>
+					</p>
+				</div>
+				<div>
+					<p class="multiplier craft-speed">
+						<span class="multiplier-name">工藝:</span>
+						<span class="multiplier-amount" id="craft-speed"></span
+						>x
+					</p>
+					<p class="multiplier research-speed">
+						<span class="multiplier-name">研究:</span>
+						<span
+							class="multiplier-amount"
+							id="research-speed"
+						></span
+						>x
+					</p>
+				</div>
+			</section>
+
+			<!-- Game control panel -->
+			<section id="controls">
+				<!-- Assign tab - assign villagers to jobs -->
+				<div id="assign">
+					<div class="job tent">
+						<h2>帳篷</h2>
+						<p class="job-details">
+							Lv.
+							<span class="job-level" id="tent-level"></span>
+						</p>
+						<div class="villager">
+							<p>
+								<span class="job-count" id="lumberjack"></span>
+								村民正在砍伐樹木
+							</p>
+						</div>
+					</div>
+					<div class="job pier">
+						<h2>碼頭</h2>
+						<p class="job-details">
+							Lv. <span class="job-level" id="pier-level"></span>
+							<span class="chaos"
+								>(<span id="pier-chaos"></span>% chaos)</span
+							>
+						</p>
+						<div class="assignment villager">
+							<p>
+								村民:
+								<span
+									class="job-count"
+									id="fisherman-villager"
+								></span>
+							</p>
+							<div class="buttons">
+								<button id="fisherman-villager-up">+</button>
+								<button id="fisherman-villager-down">‒</button>
+							</div>
+						</div>
+						<div class="assignment mentor">
+							<p>
+								導師:
+								<span
+									class="job-count"
+									id="fisherman-mentor"
+								></span>
+							</p>
+							<div class="buttons">
+								<button id="fisherman-mentor-up">+</button>
+								<button id="fisherman-mentor-down">‒</button>
+							</div>
+						</div>
+						<div class="assignment manager">
+							<p>
+								經理:
+								<span
+									class="job-count"
+									id="fisherman-manager"
+								></span>
+							</p>
+							<div class="buttons">
+								<button id="fisherman-manager-up">+</button>
+								<button id="fisherman-manager-down">‒</button>
+							</div>
+						</div>
+					</div>
+					<div class="job quarry">
+						<h2>礦場</h2>
+						<p class="job-details">
+							Lv.
+							<span class="job-level" id="quarry-level"></span>
+							<span class="chaos"
+								>(<span id="quarry-chaos"></span>% chaos)</span
+							>
+						</p>
+						<div class="assignment villager">
+							<p>
+								村民:
+								<span
+									class="job-count"
+									id="miner-villager"
+								></span>
+							</p>
+							<div class="buttons">
+								<button id="miner-villager-up">+</button>
+								<button id="miner-villager-down">‒</button>
+							</div>
+						</div>
+						<div class="assignment mentor">
+							<p>
+								導師:
+								<span
+									class="job-count"
+									id="miner-mentor"
+								></span>
+							</p>
+							<div class="buttons">
+								<button id="miner-mentor-up">+</button>
+								<button id="miner-mentor-down">‒</button>
+							</div>
+						</div>
+						<div class="assignment manager">
+							<p>
+								經理:
+								<span
+									class="job-count"
+									id="miner-manager"
+								></span>
+							</p>
+							<div class="buttons">
+								<button id="miner-manager-up">+</button>
+								<button id="miner-manager-down">‒</button>
+							</div>
+						</div>
+					</div>
+					<div class="job smithy">
+						<h2>工坊</h2>
+						<p class="job-details">
+							Lv.
+							<span class="job-level" id="smithy-level"></span>
+							<span class="chaos"
+								>(<span id="smithy-chaos"></span>% chaos)</span
+							>
+						</p>
+						<div class="assignment villager">
+							<p>
+								村民:
+								<span
+									class="job-count"
+									id="blacksmith-villager"
+								></span>
+							</p>
+							<div class="buttons">
+								<button id="blacksmith-villager-up">+</button>
+								<button id="blacksmith-villager-down">‒</button>
+							</div>
+						</div>
+						<div class="assignment mentor">
+							<p>
+								導師:
+								<span
+									class="job-count"
+									id="blacksmith-mentor"
+								></span>
+							</p>
+							<div class="buttons">
+								<button id="blacksmith-mentor-up">+</button>
+								<button id="blacksmith-mentor-down">‒</button>
+							</div>
+						</div>
+						<div class="assignment manager">
+							<p>
+								經理:
+								<span
+									class="job-count"
+									id="blacksmith-manager"
+								></span>
+							</p>
+							<div class="buttons">
+								<button id="blacksmith-manager-up">+</button>
+								<button id="blacksmith-manager-down">‒</button>
+							</div>
+						</div>
+					</div>
+					<div class="job academy">
+						<h2>學院</h2>
+						<p class="job-details">
+							Lv.
+							<span class="job-level" id="academy-level"></span>
+							<span class="chaos"
+								>(<span id="academy-chaos"></span>% chaos)</span
+							>
+						</p>
+						<div class="assignment villager">
+							<p>
+								村民:
+								<span
+									class="job-count"
+									id="professor-villager"
+								></span>
+							</p>
+							<div class="buttons">
+								<button id="professor-villager-up">+</button>
+								<button id="professor-villager-down">‒</button>
+							</div>
+						</div>
+						<div class="assignment mentor">
+							<p>
+								導師:
+								<span
+									class="job-count"
+									id="professor-mentor"
+								></span>
+							</p>
+							<div class="buttons">
+								<button id="professor-mentor-up">+</button>
+								<button id="professor-mentor-down">‒</button>
+							</div>
+						</div>
+						<div class="assignment manager">
+							<p>
+								經理:
+								<span
+									class="job-count"
+									id="professor-manager"
+								></span>
+							</p>
+							<div class="buttons">
+								<button id="professor-manager-up">+</button>
+								<button id="professor-manager-down">‒</button>
+							</div>
+						</div>
+					</div>
+				</div>
+
+				<!-- Craft tab - upgrades -->
+				<div id="craft">
+					<!-- Filled in by JS -->
+				</div>
+
+				<!-- Research tab - late-game upgrades -->
+				<div id="research" class="tab">
+					<!-- Filled in by JS -->
+				</div>
+			</section>
+
+			<!-- Buttons for switching between tabs -->
+			<nav>
+				<button class="tab-button" id="assign-button">調派</button>
+				<button class="tab-button" id="craft-button">製作</button>
+				<button class="tab-button" id="research-button">研究</button>
+			</nav>
+		</section>
+
+		<!-- Log display with recent events -->
+		<section id="log">
+			<button id="log-expand">
+				Log hide/expand
+				<!-- Text replaced via CSS -->
+			</button>
+			<div id="message-area">
+				<!-- Filled in by JS -->
+			</div>
+		</section>
+
+		<!-- Tutorial pop-up overlay -->
+		<div id="popup-shroud">
+			<div id="popup">
+				<p id="popup-text">
+					<!-- Filled in by JS -->
+				</p>
+				<button id="popup-dismiss">Okay</button>
+			</div>
+		</div>
+
+		<!-- Opaque overlay for major story events -->
+		<div id="story-shroud">
+			<p id="story-text">
+				Hello world!
+				<!-- Filled in by JS-->
+			</p>
+			<button id="story-dismiss">
+				Embark
+				<!-- Filled in by JS-->
+			</button>
+		</div>
+	</body>
+</html>
