@@ -624,7 +624,7 @@ Game.prototype.upgradeList = [
 								其他村莊將會出現。時間停止，如今只剩下思想。
 								其他人會造成進一步的破壞。偉大的工作即將完成。
 								巨石必須倒塌。巨石必須倒塌。`,
-								"Join",
+								"Game over ... Life forward!",
 								() => {
 									//game.gameOver();
 								}
