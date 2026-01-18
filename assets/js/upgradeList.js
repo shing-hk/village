@@ -58,7 +58,7 @@ Game.prototype.upgradeList = [
 			game.lumberjack += 1;
 			game.logMessage(
 				"event",
-				"One extra villager has joined your settlement."
+				"你的村莊迎來了一位新村民"
 			);
 		},
 	}),
