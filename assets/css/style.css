@@ -237,20 +237,20 @@ button:active {
 
 #pier-img {
 	display: var(--fisherman-display);
-	left: 112px;
-	top: 304px;
+	left: 95px;
+	top: 200px;
 }
 
 #fisherman-1-img {
 	display: var(--fisherman-display);
-	left: 119px;
-	top: 292px;
+	left: 120px;
+	top: 228px;
 }
 
 #fisherman-2-img {
 	display: var(--fisherman-display);
-	left: 136px;
-	top: 336px;
+	left: 175px;
+	top: 260px;
 }
 
 #quarry-img {
@@ -273,20 +273,20 @@ button:active {
 
 #smithy-img {
 	display: var(--blacksmith-display);
-	left: 261px;
-	top: 280px;
+	left: 265px;
+	top: 275px;
 }
 
 #blacksmith-img {
 	display: var(--blacksmith-display);
-	left: 338px;
+	left: 340px;
 	top: 320px;
 }
 
 #academy-img {
 	display: var(--professor-display);
 	left: 138px;
-	top: 340px;
+	top: 335px;
 }
 
 #professor-1-img {
@@ -298,7 +298,7 @@ button:active {
 #professor-2-img {
 	display: var(--professor-display);
 	left: 218px;
-	top: 424px;
+	top: 415px;
 }
 
 /* #endregion */
