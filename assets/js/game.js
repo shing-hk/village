@@ -190,7 +190,7 @@ class Game {
 				是時候開始你的定居點建設工作了。`,
 				"開始"
 			);
-			this.logMessage("info", "Welcome to Village of Chaos!");
+			this.logMessage("info", "歡迎來到混亂村莊 (Village of Chaos)!");
 			this.showPopup(
 				// Defined in tutorial.js
 				`歡迎來到混亂村莊！在這個遊戲中，你將會收集資源，
