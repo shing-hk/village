@@ -637,7 +637,7 @@ class Game {
 		for (let field of this.serializable) state[field] = this[field];
 		localStorage.setItem("savegame", JSON.stringify(state));
 
-		this.logMessage("info", "Game saved.");
+		this.logMessage("info", "已儲存遊戲");
 	}
 
 	// Load the game state from cookies
@@ -656,7 +656,7 @@ class Game {
 		this.dom.popupDismiss.click();
 
 		this.dom.messageArea.replaceChildren(); // We don't restore log entries
-		this.logMessage("info", "Game loaded.");
+		this.logMessage("info", "已載入遊戲");
 		return true;
 	}
 
