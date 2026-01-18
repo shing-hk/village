@@ -116,7 +116,7 @@ Game.prototype.upgradeList = [
 			game.unlock("miner");
 			game.logMessage(
 				"event",
-				"你已經建造了一個採石場，現在可以調派礦工了"
+				"你已經建造了一個礦場，現在可以調派礦工了"
 			);
 			game.levels.quarry += 1;
 		},
@@ -256,7 +256,7 @@ Game.prototype.upgradeList = [
 			game.unlock("manager");
 			game.logMessage(
 				"event",
-				"現在可以調派混亂控制者了！也稱為經理"
+				"現在可以調派經理了！也稱為混亂控制者！"
 			);
 		},
 	}),
@@ -588,9 +588,9 @@ Game.prototype.upgradeList = [
 			food: 300000,
 			stone: 500000,
 		},
-		duration: 120000,
+		duration: 12000,
 		once: true,
-		requirement: ["academy", 4],
+		requirement: ["academy", 5],
 		effect: function (game) {
 			game.showStory(
 				`陽光明媚，村民們早早起床，
@@ -626,7 +626,7 @@ Game.prototype.upgradeList = [
 								巨石必須倒塌。巨石必須倒塌。`,
 								"Game over ... Life forward!",
 								() => {
-									//game.gameOver();
+									game.gameOver();
 								}
 							);
 						}

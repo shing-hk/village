@@ -156,6 +156,7 @@ class Game {
 		this.dom.save.addEventListener("click", () => {
 			this.save();
 		});
+
 		this.dom.load.addEventListener("click", () => {
 			this.load();
 		});
@@ -543,13 +544,12 @@ class Game {
 
 	// Callback for manually collecting food
 	gatherFood = () => {
-		this.food += 10000;
+		this.food += 1000;
 	};
 
 	// Callback for manually collecting wood
 	gatherWood = () => {
-		this.wood += 10000;
-		this.stone += 10000;
+		this.wood += 1000;
 	};
 
 	// Callback for assigning a villager to a position
@@ -675,8 +675,8 @@ class Game {
 	// Not called by anything; meant to be used from web console to speed up
 	// testing. Try "game.cheat()"
 	cheat() {
-		this.wood = 100000;
-		this.food = 100000;
-		this.stone = 100000;
+		this.wood += 1000000;
+		this.food += 1000000;
+		this.stone += 1000000;
 	}
 }
