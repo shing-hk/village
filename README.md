@@ -1,9 +1,9 @@
 
-original author: tearnote
+<h1>original author: tearnote</h1>
 
 https://github.com/Tearnote/village-of-chaos
 
-Traditional Chinese localization, with cheats :) 
+<h1>Traditional Chinese localization, with cheats :) </h1>
 
 Demo:
 
