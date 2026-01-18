@@ -226,7 +226,7 @@ button:active {
 #tent-img {
 	display: var(--assign-display);
 	left: 320px;
-	top: 340px;
+	top: 335px;
 }
 
 #villager-img {
@@ -255,13 +255,13 @@ button:active {
 
 #quarry-img {
 	display: var(--miner-display);
-	left: 337px;
-	top: 130px;
+	left: 398px;
+	top: 122px;
 }
 
 #miner-1-img {
 	display: var(--miner-display);
-	left: 353px;
+	left: 412px;
 	top: 162px;
 }
 
@@ -297,8 +297,8 @@ button:active {
 
 #professor-2-img {
 	display: var(--professor-display);
-	left: 218px;
-	top: 415px;
+	left: 220px;
+	top: 410px;
 }
 
 /* #endregion */
@@ -736,11 +736,11 @@ header > button {
 
 #log-expand:after {
 	font-size: 0.8rem;
-	content: "log +";
+	content: "日誌 +";
 }
 
 #log.visible > #log-expand:after {
-	content: "log -";
+	content: "日誌 -";
 }
 
 /* Because of different layouts, we need separate breakpoints for portrait and landscape */
